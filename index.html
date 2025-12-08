@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Alex Mercer | Business Strategy Student</title>
+    <meta name="description" content="Portfolio of Alex Mercer, a forward-thinking Business Student specializing in strategic growth and market analysis.">
+    <meta name="keywords" content="Business Student, Portfolio, Strategy, Economics, Entrepreneur, Minimalist Design">
+    <meta name="author" content="Alex Mercer">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.yourwebsite.com/">
+    <meta property="og:title" content="Alex Mercer | Business Strategy">
+    <meta property="og:description" content="Forward-thinking Business Student based in NYC.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.yourwebsite.com/">
+    <meta property="twitter:title" content="Alex Mercer | Business Strategy">
+    <meta property="twitter:description" content="Forward-thinking Business Student based in NYC.">
+    <meta property="twitter:image" content="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80">
+
+    <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Alex Mercer",
+      "url": "http://www.yourwebsite.com",
+      "jobTitle": "Business Student",
+      "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      "description": "Business student focused on economics and future tech trends.",
+      "email": "contact@alexmercer.com",
+      "telephone": "+1-555-0199"
+    }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================================
+           CSS STYLES
+        ========================================== */
+        :root {
+            --bg-color: #050505;
+            --card-bg: #0a0a0a;
+            --text-main: #ffffff;
+            --text-muted: #888888;
+            --accent: #ffffff;
+            --border: rgba(255, 255, 255, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            cursor: crosshair; /* Cool futuristic cursor */
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Space Mono', monospace;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px; /* Essential for 3D tilt */
+        }
+
+        /* Ambient Background Noise & Grid */
+        .bg-noise {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+            opacity: 0.15;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .bg-grid {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-size: 50px 50px;
+            background-image:
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            z-index: -2;
+            mask-image: radial-gradient(circle, black 40%, transparent 80%);
+        }
+
+        /* The Main Card */
+        .card-container {
+            width: 100%;
+            max-width: 900px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform-style: preserve-3d; /* Allows child elements to pop out */
+        }
+
+        .card {
+            display: flex;
+            flex-direction: row;
+            background: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            width: 100%;
+            max-height: 80vh;
+            border-radius: 0; /* Sharp corners for brutalism */
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.1s ease-out; /* Smooth movement */
+        }
+
+        /* Scanline Overlay */
+        .card::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+            background-size: 100% 4px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        /* Left Side: Image */
+        .card-image {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+            overflow: hidden;
+            border-right: 1px solid var(--border);
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(1.2);
+            transition: filter 0.5s ease, transform 0.5s ease;
+        }
+
+        .card:hover .card-image img {
+            filter: grayscale(0%) contrast(1);
+            transform: scale(1.05);
+        }
+
+        /* Right Side: Content */
+        .card-content {
+            flex: 1.2;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            z-index: 3;
+            transform: translateZ(30px); /* 3D pop effect */
+        }
+
+        /* Typography & Decor */
+        .student-id {
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            display: block;
+            text-transform: uppercase;
+        }
+
+        .student-id::before {
+            content: "[ ";
+            color: #fff;
+        }
+        .student-id::after {
+            content: " ]";
+            color: #fff;
+        }
+
+        h1 {
+            font-size: 3rem;
+            line-height: 1;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .role {
+            font-size: 1rem;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .bio {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            color: #ccc;
+            max-width: 400px;
+        }
+
+        /* Action Buttons */
+        .actions {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            text-decoration: none;
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 12px 24px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            background: transparent;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: #fff;
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn:hover {
+            color: #000;
+            border-color: #fff;
+        }
+
+        .btn:hover::before {
+            left: 0;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .card {
+                flex-direction: column;
+                max-height: 90vh;
+                overflow-y: auto;
+            }
+            .card-image {
+                min-height: 250px;
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+            }
+            .card-content {
+                padding: 30px;
+            }
+            h1 { font-size: 2rem; }
+            .bio { font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-noise"></div>
+    <div class="bg-grid"></div>
+
+    <main class="card-container" id="tilt-card">
+        <div class="card">
+
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Portrait of Alex Mercer">
+            </div>
+
+            <section class="card-content">
+                <span class="student-id">ID: 8490-BUS-NY</span>
+
+                <h1 id="hacker-text" data-value="ALEX MERCER">ALEX MERCER</h1>
+                <div class="role">Business Strategy Student</div>
+
+                <p class="bio">
+                    Obsessed with the intersection of market economics and future technology. 
+                    Currently scaling strategies and analyzing data patterns. 
+                    Just a normal guy building tomorrow.
+                </p>
+
+                <div class="actions">
+                    <a href="https://instagram.com" target="_blank" class="btn">Instagram</a>
+                    <a href="mailto:email@example.com" class="btn">Email</a>
+                    <a href="tel:+1234567890" class="btn">Phone</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        // =========================================
+        // JAVASCRIPT ANIMATIONS
+        // =========================================
+
+        /* 1. 3D Tilt Effect */
+        const cardContainer = document.getElementById('tilt-card');
+        const card = cardContainer.querySelector('.card');
+
+        document.addEventListener('mousemove', (e) => {
+            if (window.innerWidth < 768) return; // Disable on mobile
+
+            const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+            const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+
+            card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+        });
+
+        // Reset tilt on mouse leave
+        document.addEventListener('mouseleave', () => {
+            card.style.transform = `rotateY(0deg) rotateX(0deg)`;
+        });
+
+        /* 2. Hacker Text Decoding Effect on Name Hover/Load */
+        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        const h1 = document.getElementById("hacker-text");
+
+        let interval = null;
+
+        const animateText = () => {  
+            let iteration = 0;
+            const originalText = h1.dataset.value;
+
+            clearInterval(interval);
+
+            interval = setInterval(() => {
+                h1.innerText = originalText
+                .split("")
+                .map((letter, index) => {
+                    if(index < iteration) {
+                        return originalText[index];
+                    }
+                    return letters[Math.floor(Math.random() * 26)];
+                })
+                .join("");
+
+                if(iteration >= originalText.length){ 
+                    clearInterval(interval);
+                }
+
+                iteration += 1 / 3;
+            }, 30);
+        }
+
+        // Run animation on load
+        window.onload = animateText;
+
+        // Run animation on hover
+        h1.onmouseover = animateText;
+
+    </script>
+</body>
+</html>
